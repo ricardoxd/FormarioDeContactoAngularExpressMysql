@@ -1,0 +1,30 @@
+label{
+    font-weight: bold;
+}
+
+.banner {
+    background-color: rgb(178, 229, 26);
+    text-align: center;
+    height: 100px;
+    h1 {
+        color: white;
+        margin: auto;
+        width: 50%;
+        padding-top: 18px;
+    }
+}
+
+.center {
+    margin: auto;
+    width: 90%;
+}
+@media only screen and (max-width: 360px) {
+    h1{
+        font-size: 25px;
+    }
+}
+@media only screen and (max-width: 1024px) {
+    h1{
+        font-size: 32px;
+    }
+}

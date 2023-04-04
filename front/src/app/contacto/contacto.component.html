@@ -1,0 +1,71 @@
+<div class="row justify-content-md-center">
+    <div class="col-md-10 banner">
+        <h1 class="center">Contacto de soporte!</h1>
+    </div>
+
+    <div class="col-md-10 mt-5">
+        <div class="alert alert-success" role="alert" *ngIf="enviado">
+            Mensaje enviado con exito!
+          </div>
+        <form class="col-md-10 center" [formGroup]="form" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <label for="name">Nombre completo</label>
+                <input type="text" class="form-control " [ngClass]="{ 'is-invalid': submitted && form.get('nombre').errors }" id="name" formControlName="nombre">
+                <div *ngIf="submitted && form.get('nombre').errors" class="invalid-feedback">
+                    <div *ngIf="form.get('nombre').errors.required"> (El nombre no puede quedar vacío)</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="empresa">Nombre empresa</label>
+                <input type="text" class="form-control" [ngClass]="{ 'is-invalid': submitted && form.get('empresa').errors }" id="empresa" formControlName="empresa">
+                <div *ngIf="submitted && form.get('empresa').errors" class="invalid-feedback">
+                    <div *ngIf="form.get('empresa').errors.required"> (La empresa no puede quedar vacía)</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="email">Correo electronico</label>
+                <input type="email" class="form-control" id="email" [ngClass]="{ 'is-invalid': submitted && form.get('correo').errors }"  formControlName="correo">
+                <div *ngIf="submitted && form.get('correo').errors" class="invalid-feedback">
+                    <div *ngIf="form.get('correo').errors.required"> (El nombre no puede quedar vacío)</div>
+                    <div *ngIf="form.get('correo').errors.email"> (El mail no es válido)</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <label for="telefono">Teléfono</label>
+                    <input type="tel" class="form-control" id="telefono" mask='+ 00 (000) 000-0000' [ngClass]="{ 'is-invalid': submitted && form.get('telefono').errors }"formControlName="telefono">
+                    <div *ngIf="submitted && form.get('telefono').errors" class="invalid-feedback">
+                        <div *ngIf="form.get('telefono').errors.required"> (El teléfono no puede quedar vacío)</div>
+                    </div>
+                </div>
+                <div class="form-group  col-md-6">
+                    <label for="categoria">Categoría</label>
+                    <select class="form-control" id="categoria" [ngClass]="{ 'is-invalid': submitted && form.get('id_categoria').errors }" formControlName="id_categoria">
+                        <option value="">Seleccione</option>
+                        <option *ngFor="let item of listadoCategorias" value="{{item.id_categorias}}">{{item.nombre}}</option>
+                    </select>
+                    <div *ngIf="submitted && form.get('id_categoria').errors" class="invalid-feedback">
+                        <div *ngIf="form.get('id_categoria').errors.required"> (La categoria no puede quedar vacía)</div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="mensaje">Mensaje</label>
+                <textarea class="form-control" placeholder="Escriba su nombre" id="mensaje" [ngClass]="{ 'is-invalid': submitted && form.get('mensaje').errors }" formControlName="mensaje"></textarea>
+                <div *ngIf="submitted && form.get('mensaje').errors" class="invalid-feedback">
+                    <div *ngIf="form.get('mensaje').errors.required"> (El mensaje no puede quedar vacío)</div>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-success">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-send"
+                    viewBox="0 0 16 16">
+                    <path
+                        d="M15.854.146a.5.5 0 0 1 .11.54l-5.819 14.547a.75.75 0 0 1-1.329.124l-3.178-4.995L.643 7.184a.75.75 0 0 1 .124-1.33L15.314.037a.5.5 0 0 1 .54.11ZM6.636 10.07l2.761 4.338L14.13 2.576 6.636 10.07Zm6.787-8.201L1.591 6.602l4.339 2.76 7.494-7.493Z" />
+                </svg>
+                Enviar
+            </button>
+        </form>
+
+    </div>
+
+</div>
